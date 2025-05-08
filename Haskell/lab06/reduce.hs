@@ -1,9 +1,6 @@
-reduce :: (a -> b -> b) -> b -> [a] -> b
-reduce _ p [] = p
-reduce f p (x:z) = f x (reduce f p z)
+reduce f p = foldr f p
 
-main :: IO()
 main = do
-    print(reduce (+) 0 [1, 2, 3, 4])
-    print(reduce (+) 1 [1, 2, 3, 4])
-    print(reduce (*) 2 [1, 2, 3, 4])
+    print $ reduce (+) 0 [1,2,3,4]
+    print $ reduce (+) 1 [1,2,3,4]
+    print $ reduce (*) 2 [1,2,3,4]
